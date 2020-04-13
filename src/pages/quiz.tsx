@@ -51,9 +51,21 @@ const causes = [
     nonprofits: 15,
     gradient: ['#5ee7df', '#b490ca'],
   },
-  { name: '🐣 Reproductive Rights', active: false },
-  { name: '🚚 Disaster Relief', active: false },
-  { name: '🏠 Food & Shelter', active: false },
+  {
+    name: '🐣 Reproductive Rights',
+    active: false,
+    gradient: ['#5ee7df', '#b490ca'],
+  },
+  {
+    name: '🚚 Disaster Relief',
+    active: false,
+    gradient: ['#5ee7df', '#b490ca'],
+  },
+  {
+    name: '🏠 Food & Shelter',
+    active: false,
+    gradient: ['#5ee7df', '#b490ca'],
+  },
 ]
 
 const CauseToggleBox = ({ cause, toggled = false, onClick }) => (
