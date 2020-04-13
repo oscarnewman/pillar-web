@@ -252,7 +252,7 @@ const AnimatedQuiz = () => {
     plan: PreferencesSection,
   }
 
-  const { transitions, step, next, back } = useMultistepForm('plan')
+  const { transitions, step, next, back } = useMultistepForm('initial')
 
   const nextStep = (): boolean => {
     window.scrollTo({
@@ -262,12 +262,12 @@ const AnimatedQuiz = () => {
 
     switch (step.name) {
       case 'initial':
-        next('plan')
-        break
-      case 'plan':
         next('causes')
         break
       case 'causes':
+        next('plan')
+        break
+      case 'plan':
         console.log('Submitting')
         return true
         break
