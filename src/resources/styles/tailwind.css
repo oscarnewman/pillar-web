@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#__next {
+  height: 100%;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* flex: 1; */
+  /* justify-content: center; */
+}
+.link {
+  background: linear-gradient(
+    0deg,
+    theme(colors.purple.50) 50%,
+    transparent 50%
+  );
+  @apply text-purple-900 font-medium;
+}
