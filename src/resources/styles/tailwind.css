@@ -19,3 +19,7 @@ body,
   );
   @apply text-purple-900 font-medium;
 }
+
+.soft-light {
+  mix-blend-mode: soft-light;
+}

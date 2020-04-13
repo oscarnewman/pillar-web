@@ -49,6 +49,8 @@ const TextInput: React.FC<InputProps> = ({
           'border-red-500 text-red-600': error,
           'pl-8': icon,
         })}
+        // placeholder={title}
+        aria-label={title}
         onChange={handleChange}
         onBlur={(e) => onBlur(e.target.value)}
         {...props}

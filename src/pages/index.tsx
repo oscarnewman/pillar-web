@@ -20,7 +20,7 @@ const Hero = () => (
   <div className="">
     <div className="mt-10 flex flex-col lg:items-center lg:flex-row container px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
       <div className="sm:text-center lg:text-left order-2">
-        <h2 className="font-display text-4xl text-purple-500 tracking-tight leading-10 sm:text-5xl sm:leading-none md:text-6xl font-extrabold">
+        <h2 className="font-display text-4xl text-purple-600 tracking-tight leading-10 sm:text-5xl sm:leading-none md:text-6xl font-extrabold">
           Meet Pillar, <br className="" />
           <span className="text-gray-900">
             Your Personal Philanthropic Advisor
@@ -32,6 +32,7 @@ const Hero = () => (
         </p>
         <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
           <PrimaryButton
+            href="/quiz"
             afterIcon={
               <i className="fas fa-arrow-right ml-3 text-indigo-300" />
             }

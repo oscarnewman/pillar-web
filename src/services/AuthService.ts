@@ -2,20 +2,15 @@ import Axios from 'axios'
 
 export class AuthService {
   async login(email: string, password: string) {
-    try {
-      Axios.defaults.withCredentials = true
-      await this.establishCSRFProtection()
+    Axios.defaults.withCredentials = true
+    await this.establishCSRFProtection()
 
-      const res = await Axios.post(`${process.env.API_URL}/auth/login`, {
-        email,
-        password,
-      })
+    const res = await Axios.post(`${process.env.API_URL}/auth/login`, {
+      email,
+      password,
+    })
 
-      return res.data.data
-    } catch (error) {
-      console.error(error.response.data)
-      return null
-    }
+    return res.data.data
   }
 
   private establishCSRFProtection(): Promise<any> {

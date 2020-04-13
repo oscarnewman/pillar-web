@@ -1,4 +1,5 @@
 import React, { useMemo, useCallback } from 'react'
+import Link from 'next/link'
 
 export type ButtonOrLinkTypes = HTMLAnchorElement | HTMLButtonElement
 
@@ -60,12 +61,11 @@ const ButtonOrLink: React.SFC<ButtonOrLinkProps> = ({
     [onMouseUp],
   )
 
-  const Tag = href ? 'a' : 'button'
   const props: JSX.IntrinsicElements['a'] & JSX.IntrinsicElements['button'] = {}
 
   // Determine props based on element type
   if (href) {
-    props.href = href
+    // props.href = href
     props.rel = rel
 
     if (openInNewWindow) {
@@ -75,17 +75,37 @@ const ButtonOrLink: React.SFC<ButtonOrLinkProps> = ({
         props.rel = 'noopener noreferrer'
       }
     }
+
+    return (
+      <Link href={href}>
+        <a
+          {...props}
+          {...restProps}
+          onClick={handleClick}
+          onMouseUp={onMouseUp}
+        >
+          {!loading && beforeIcon && beforeIcon}
+          <span>{children}</span>
+          {!loading && afterIcon && afterIcon}
+        </a>
+      </Link>
+    )
   } else {
     props.disabled = disabled || loading || false
     props.type = type || 'button'
   }
 
   return (
-    <Tag {...restProps} {...props} onClick={handleClick} onMouseUp={onMouseUp}>
+    <button
+      {...restProps}
+      {...props}
+      onClick={handleClick}
+      onMouseUp={onMouseUp}
+    >
       {!loading && beforeIcon && beforeIcon}
       <span>{children}</span>
       {!loading && afterIcon && afterIcon}
-    </Tag>
+    </button>
   )
 }
 

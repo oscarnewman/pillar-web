@@ -8,8 +8,10 @@ module.exports = {
     customForms: (theme) => ({
       default: {
         'input, textarea, multiselect': {
-          backgroundColor: '#F0F4F8',
-          border: 'none',
+          // backgroundColor: '#F0F4F8',
+          boxShadow: theme('boxShadow.default'),
+          // border: 'none',
+          borderColor: theme('colors.gray.100'),
         },
       },
     }),
@@ -17,6 +19,7 @@ module.exports = {
       fontFamily: {
         display: ['ff-meta-serif-web-pro', ...theme.fontFamily.serif],
         sans: ['aktiv-grotesk', ...theme.fontFamily.sans],
+        serif: ['New York', ...theme.fontFamily.serif],
       },
       screens: {
         print: { raw: 'print' },
@@ -49,7 +52,7 @@ module.exports = {
           '900': '#014D40',
         },
         gray: {
-          '25': '#F0F4F8',
+          '25': '#f8fafc',
           '50': '#F0F4F8',
           '100': '#D9E2EC',
           '200': '#BCCCDC',
