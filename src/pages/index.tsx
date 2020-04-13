@@ -31,15 +31,18 @@ const Hero = () => (
           you, and it manages your giving in real time.
         </p>
         <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-          <PrimaryButton
-            href="/quiz"
-            afterIcon={
-              <i className="fas fa-arrow-right ml-3 text-indigo-300" />
-            }
-            large
-          >
-            Start your portfolio
-          </PrimaryButton>
+          <div>
+            <PrimaryButton
+              block
+              href="/quiz"
+              afterIcon={
+                <i className="fas fa-arrow-right ml-3 text-indigo-300" />
+              }
+              large
+            >
+              Start your portfolio
+            </PrimaryButton>
+          </div>
           <div className="mt-3 sm:mt-0 sm:ml-3">
             <SecondaryButton block href="/test" large>
               How it works

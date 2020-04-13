@@ -28,11 +28,15 @@ const Button: React.SFC<ButtonProps> = ({
   loading,
   small,
   className,
+  beforeIcon,
+  afterIcon,
   ...restProps
 }) => {
   return (
     <ButtonOrLink
       {...restProps}
+      beforeIcon={beforeIcon}
+      afterIcon={afterIcon}
       aria-busy={loading}
       disabled={loading}
       loading={loading}
@@ -43,7 +47,10 @@ const Button: React.SFC<ButtonProps> = ({
           'px-4 py-2 text-base leading-6 font-medium md:py-3 md:px-6':
             !large && !small,
           'pointer-events-none opacity-50': disabled,
+          'justify-between': beforeIcon || afterIcon,
+          'justify-center': !beforeIcon && !afterIcon,
         },
+        'flex items-center',
         className,
       )}
     >

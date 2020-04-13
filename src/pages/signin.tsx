@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 const SignIn = () => {
   return (
-    <div className="w-full h-full bg-purple-600 flex">
+    <div className="w-full h-full bg bg-cover bg-center bg-purple-600 flex">
       <Head title="Login | Pillar"></Head>
       <div className="flex items-center pt-12 justify-center bg-white flex-1 max-w-xl shadow-2xl pb-24">
         <div className="px-12 flex flex-col items-center max-w-lg  w-full">
@@ -28,7 +28,6 @@ const SignIn = () => {
           <LoginForm />
         </div>
       </div>
-      <div className="bg bg-cover bg-center flex-1 w-full h-full"></div>
       <style jsx>{`
         .bg {
           background-image: url('https://res.cloudinary.com/saythanks/image/upload/v1586754572/pillar/photo-1507608869274-d3177c8bb4c7.jpg');

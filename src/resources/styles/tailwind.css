@@ -23,3 +23,11 @@ body,
 .soft-light {
   mix-blend-mode: soft-light;
 }
+
+button {
+  touch-action: manipulation;
+}
+
+input {
+  appearance: none;
+}

@@ -11,6 +11,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState('')
 
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const router = useRouter()
 
@@ -22,7 +23,7 @@ const LoginForm = () => {
       .login(email, password)
       .then(console.log)
       .then(() => router.push('/'))
-      .catch(console.error)
+      .catch(() => setError('Your email and/or password were incorrect.'))
       .finally(() => setLoading(false))
   }
 
@@ -33,6 +34,7 @@ const LoginForm = () => {
           title="Email"
           type="email"
           name="email"
+          error={error}
           required
           className="mb-6"
           value={email}
@@ -43,6 +45,7 @@ const LoginForm = () => {
             title="Password"
             name="password"
             type="password"
+            error={error}
             required
             value={password}
             onChange={setPassword}

@@ -6,6 +6,11 @@ import BasicPage from '../components/layout/BasicPage'
 import cn from 'classnames'
 import SecondaryButton from '../components/ui/SecondaryButton'
 import PrimaryButton from '../components/ui/PrimaryButton'
+import useMultistepForm, {
+  FormStepProps,
+} from '../components/MultistepForm/useMultistepForm'
+import { animated, useSpring } from 'react-spring'
+import MultipleChoiceQuestion from '../components/MultipleChoiceQuestion'
 
 const Section = ({ children, enabled = true }) => (
   <section
@@ -90,6 +95,35 @@ const CauseToggleBox = ({ cause, toggled = false, onClick }) => (
   </div>
 )
 
+const InitialSection: React.SFC<FormStepProps> = ({ advanceForm }) => (
+  <Section>
+    <div
+      className={cn(
+        'sm:p-12 p-6 bg-gray-900 text-white border-gray-100 shadow-2xl',
+        'rounded transition-all duration-150  text-left',
+      )}
+    >
+      <Title>Building your plan</Title>
+      <div className="max-w-lg text-left mt-8 text-base sm:text-lg md:text-xl leading-relaxed text-indigo-100 font-normal">
+        <p>
+          <strong>Stop stressing about where, how, why, or if to give.</strong>{' '}
+          Our experts can make your giving impactful and important, and always
+          up to date with what goes on in the world.
+        </p>
+        <div className="h-6"></div>
+        <p>
+          To design and automate your portfolio, we need to learn a little about
+          you, so we wrote a few quick questions.
+        </p>
+      </div>
+      <div className="h-10"></div>
+      <SecondaryButton block onClick={advanceForm}>
+        Let's go 🎉
+      </SecondaryButton>
+    </div>
+  </Section>
+)
+
 const Quiz = () => {
   const [chosenCauses, setCauses] = useState({})
   const needed = 1
@@ -99,47 +133,27 @@ const Quiz = () => {
   return (
     <BasicPage title="Build your Plan | Pillar">
       <Container>
-        <Section>
-          <div
-            className={cn(
-              'sm:p-12 p-6 bg-gray-900 text-white border-gray-100 shadow-2xl',
-              'rounded transition-all duration-150  text-left',
-            )}
-          >
-            <Title>Building your plan</Title>
-            <div className="max-w-lg text-left mt-8 text-xl leading-relaxed text-indigo-100 font-normal">
-              <p>
-                <strong>
-                  Stop stressing about where, how, why, or if to give.
-                </strong>{' '}
-                Our experts can make your giving impactful and important, and
-                always up to date with what goes on in the world.
-              </p>
-              <div className="h-6"></div>
-              <p>
-                To design and automate your portfolio, we need to learn a little
-                about you, so we wrote a few quick questions.
-              </p>
-            </div>
-            <div className="h-10"></div>
-            <SecondaryButton block>Let's go 🎉</SecondaryButton>
-          </div>
-        </Section>
+        <div className="h-6 md:h-12"></div>
+        <AnimatedQuiz></AnimatedQuiz>
+        {/* <CauseSection
+                    chosenCauses={chosenCauses}
+                    setCauses={setCauses}
+                ></CauseSection>
 
-        <CauseSection
-          chosenCauses={chosenCauses}
-          setCauses={setCauses}
-        ></CauseSection>
-
-        <PreferencesSection enabled={left <= 0}></PreferencesSection>
+                <PreferencesSection enabled={left <= 0}></PreferencesSection> */}
       </Container>
     </BasicPage>
   )
 }
 
-const CauseSection = ({ chosenCauses, setCauses }) => {
+const CauseSection: React.SFC<FormStepProps> = ({
+  form,
+  setForm,
+  advanceForm,
+  back,
+}) => {
   const needed = 1
-  const chosen = Object.values(chosenCauses).filter((a) => a).length
+  const chosen = Object.values(form.causes).filter((a) => a).length
   const left = needed - chosen
   return (
     <Section>
@@ -155,11 +169,14 @@ const CauseSection = ({ chosenCauses, setCauses }) => {
           <div className="mx-6 my-2 md:my-6 w-full md:w-64" key={cause.name}>
             <CauseToggleBox
               cause={cause}
-              toggled={!!chosenCauses[cause.name]}
+              toggled={!!form.causes[cause.name]}
               onClick={() =>
-                setCauses({
-                  ...chosenCauses,
-                  [cause.name]: !chosenCauses[cause.name],
+                setForm({
+                  ...form,
+                  causes: {
+                    ...form.causes,
+                    [cause.name]: !form.causes[cause.name],
+                  },
                 })
               }
             ></CauseToggleBox>
@@ -167,21 +184,142 @@ const CauseSection = ({ chosenCauses, setCauses }) => {
         ))}
       </div>
       <div className="h-6"></div>
-      <SecondaryButton large disabled={left > 0}>
+      <SecondaryButton large onClick={advanceForm} disabled={left > 0}>
         {left > 0 ? <p>Pick a Cause</p> : <p>Continue</p>}
       </SecondaryButton>
     </Section>
   )
 }
 
-const PreferencesSection = ({ enabled }) => {
+const PreferencesSection: React.SFC<FormStepProps> = ({
+  form,
+  setForm,
+  back,
+  advanceForm,
+}) => {
+  const setForQuestion = (question) => (value) =>
+    setForm({
+      ...form,
+      preferences: { ...form.preferences, [question]: value },
+    })
+
   return (
-    <Section enabled={enabled}>
+    <Section enabled={true}>
       <Title>How do you give?</Title>
       <Description>
         Answer some questions to tell us what you value when you give.
       </Description>
+
+      <div className="w-full mx-auto flex flex-col items-start max-w-lg">
+        <div className="h-12"></div>
+
+        <MultipleChoiceQuestion
+          question="Do you agree with the concept of charity?"
+          selected={form.preferences.charity}
+          setSelected={setForQuestion('charity')}
+          options={[
+            { name: 'Yes, always', id: 'yes' },
+            { name: 'Only when it benefits me', id: 'sometimes' },
+            { name: 'If my friends guilt me into it', id: 'barely' },
+            { name: 'Hardly ever', id: 'no' },
+          ]}
+        />
+
+        <div className="h-6"></div>
+
+        <MultipleChoiceQuestion
+          question="Which part of the environment do you care about the most?"
+          options={[
+            { name: 'Trees', id: 'yes' },
+            { name: 'Water, I think?', id: 'sometimes' },
+            { name: 'Possums', id: 'barely' },
+            { name: 'Bugs', id: 'no' },
+          ]}
+          setSelected={setForQuestion('environment')}
+          selected={form.preferences.environment}
+        />
+      </div>
+
+      <SecondaryButton onClick={advanceForm}>Continue</SecondaryButton>
     </Section>
+  )
+}
+
+const AnimatedQuiz = () => {
+  const steps = {
+    initial: InitialSection,
+    causes: CauseSection,
+    plan: PreferencesSection,
+  }
+
+  const { transitions, step, next, back } = useMultistepForm('plan')
+
+  const nextStep = (): boolean => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+
+    switch (step.name) {
+      case 'initial':
+        next('plan')
+        break
+      case 'plan':
+        next('causes')
+        break
+      case 'causes':
+        console.log('Submitting')
+        return true
+        break
+      default:
+        break
+    }
+
+    return false
+  }
+
+  const advanceForm = () => {
+    if (nextStep()) {
+      // submit
+    }
+  }
+
+  const [form, setForm] = useState({
+    causes: [],
+    preferences: {
+      charity: '',
+      environment: '',
+    },
+  })
+
+  const props = useSpring({ height: 'auto' })
+
+  return (
+    <animated.div
+      style={props}
+      className="relative transition-all duration-150"
+    >
+      {transitions.map(({ item, props, key }) => {
+        console.log(item)
+        const CurrentStep = steps[item.name]
+        return (
+          <animated.div
+            key={key}
+            style={{
+              ...props,
+              width: '100%',
+            }}
+          >
+            <CurrentStep
+              advanceForm={advanceForm}
+              form={form}
+              setForm={setForm}
+              back={back}
+            />
+          </animated.div>
+        )
+      })}
+    </animated.div>
   )
 }
 
