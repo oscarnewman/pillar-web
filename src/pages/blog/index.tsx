@@ -13,9 +13,12 @@ const PostPreview: React.SFC<{ post: PostOrPage }> = ({ post }) => (
   <Link href={`/blog/${post.slug}`}>
     <a>
       <div>
-        <h2 className="font-display text-2xl">{post.title}</h2>
+        <p className="text-purple-500 text-sm font-medium">
+          {post.primary_tag.name}
+        </p>
+        <h2 className="font-sans text-3xl">{post.title}</h2>
         <p className="text-gray-600 text-lg">{post.excerpt}</p>
-        <pre>{JSON.stringify(post, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
       </div>
     </a>
   </Link>
@@ -24,9 +27,14 @@ const PostPreview: React.SFC<{ post: PostOrPage }> = ({ post }) => (
 const Index: React.SFC<IndexProps> = ({ posts }) => {
   return (
     <BasicPage title="Thoughts | Pillar">
-      {posts.map((post) => (
-        <PostPreview post={post} />
-      ))}
+      <div className="max-w-xl mx-auto">
+        {posts.map((post) => (
+          <>
+            <PostPreview post={post} />
+            <div className="h-12"></div>
+          </>
+        ))}
+      </div>
     </BasicPage>
   )
 }
