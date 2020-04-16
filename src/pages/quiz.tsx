@@ -312,7 +312,6 @@ const AnimatedQuiz = () => {
       className="relative transition-all duration-150"
     >
       {transitions.map(({ item, props, key }) => {
-        console.log(item)
         const CurrentStep = steps[item.name]
         return (
           <animated.div

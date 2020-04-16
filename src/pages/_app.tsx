@@ -1,5 +1,6 @@
 import App from 'next/app'
 import '../resources/styles/tailwind.css'
+import '../resources/styles/theme.css'
 import '../resources/styles/nprogress.css'
 import { useEffect } from 'react'
 import nProgress from 'nprogress'

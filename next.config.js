@@ -8,6 +8,8 @@ const env = {
     ? 'pk_live_3jLMLDZZo9MhvOMvWl6U7tnJ'
     : 'pk_test_Aa9HCt6t96ix37gxvpeqOKYL',
   STRIPE_SUBSCRIPTION_KEY: prod ? 'plan_G8ZcSSLAUYXeVl' : 'plan_G8LgYuCMldDhkf',
+  GHOST_URL: 'http://localhost:2368',
+  GHOST_KEY: 'b2f5dae21899db1f2303697ef5',
 }
 
 module.exports = {

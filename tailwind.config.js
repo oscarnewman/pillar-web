@@ -14,6 +14,17 @@ module.exports = {
           borderColor: theme('colors.gray.100'),
         },
       },
+      dark: {
+        'input, textarea, multiselect': {
+          backgroundColor: theme('colors.gray.800'),
+          boxShadow: theme('boxShadow.default'),
+          borderColor: theme('colors.gray.700'),
+          '&:focus': {
+            // borderColor: theme('colors.purple.500'),
+            // boxShadow: `0 0 0 2px ${theme('colors.puprle.400')}`,
+          },
+        },
+      },
     }),
     extend: {
       fontFamily: {
@@ -22,9 +33,19 @@ module.exports = {
         serif: ['New York', ...theme.fontFamily.serif],
       },
       screens: {
-        print: { raw: 'print' },
+        light: { raw: '(prefers-color-scheme: light)' },
+        dark: { raw: '(prefers-color-scheme: dark)' },
       },
       colors: {
+        page: {
+          primary: 'var(--page-primary)',
+          secondary: 'var(--page-secondary)',
+        },
+        fg: {
+          primary: 'var(--fg-primary)',
+          secondary: 'var(--fg-secondary)',
+          accent: 'var(--fg-accent)',
+        },
         purple: {
           '25': '#f0f0ff',
           '50': '#E6E6FF',
@@ -109,7 +130,8 @@ module.exports = {
   },
   variants: {
     shadow: ['active'],
-    backgroundColor: ['hover', 'focus'],
+    backgroundColor: ['hover', 'focus', 'responsive', 'active', 'disabled'],
+    border: ['responsive'],
   },
   plugins: [require('@tailwindcss/custom-forms')],
 }

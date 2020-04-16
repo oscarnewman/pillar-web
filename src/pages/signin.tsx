@@ -8,7 +8,7 @@ const SignIn = () => {
   return (
     <div className="w-full h-full bg bg-cover bg-center bg-purple-600 flex">
       <Head title="Login | Pillar"></Head>
-      <div className="flex items-center pt-12 justify-center bg-white flex-1 max-w-xl shadow-2xl pb-24">
+      <div className="flex items-center pt-12 justify-center bg-page-primary flex-1 max-w-xl shadow-2xl pb-24">
         <div className="px-12 flex flex-col items-center max-w-lg  w-full">
           <div className="flex mb-6 flex-col items-start w-full">
             <Logo />

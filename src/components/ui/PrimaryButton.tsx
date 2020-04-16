@@ -9,8 +9,8 @@ const PrimaryButton: React.SFC<ButtonProps> = ({
   return (
     <Button
       className={cn(
-        'bg-purple-600 text-white rounded-md shadow',
-        'hover:bg-purple-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out',
+        'bg-fg-accent text-white rounded-md shadow',
+        'hover:bg-purple-400 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out',
         className,
       )}
       {...rest}
