@@ -4,32 +4,31 @@ import '../resources/styles/theme.css'
 import '../resources/styles/nprogress.css'
 import { useEffect } from 'react'
 import nProgress from 'nprogress'
-import Router from 'next/router'
+import Router, { useRouter } from 'next/router'
 import Head from '../components/util/Head'
-import withGA from 'next-ga'
+import { useGA } from '../hooks/useGA'
 
-class BaseApp extends App {
-  constructor(props) {
-    super(props)
+function BaseApp(props) {
+  const router = useRouter()
 
+  useEffect(() => {
     nProgress.configure({
       showSpinner: false,
     })
 
-    Router.events.on('routeChangeStart', nProgress.start)
-    Router.events.on('routeChangeComplete', nProgress.done)
-    Router.events.on('routeChangeError', () => nProgress.done(true))
-  }
+    router.events.on('routeChangeStart', nProgress.start)
+    router.events.on('routeChangeComplete', nProgress.done)
+    router.events.on('routeChangeError', () => nProgress.done(true))
+  }, [])
 
-  render() {
-    const { Component, pageProps } = this.props
-    return (
-      <>
-        <Head></Head>
-        <Component {...pageProps} />
-      </>
-    )
-  }
+  useGA('UA-148813695-2')
+
+  const { Component, pageProps } = props
+  return (
+    <>
+      <Head></Head>
+      <Component {...pageProps} />
+    </>
+  )
 }
-
-export default withGA('UA-148813695-2', Router)(BaseApp)
+export default BaseApp
