@@ -5,6 +5,8 @@ import cn from 'classnames'
 import PrimaryButton from '../components/ui/PrimaryButton'
 import SecondaryButton from '../components/ui/SecondaryButton'
 import Footer from '../components/ui/Footer'
+import BrowserFrame from '../components/ui/BrowserFrame'
+import DashMockup from '../components/DashMockup'
 
 const Home = () => (
   <div className="min-h-full flex flex-col">
@@ -17,7 +19,7 @@ const Home = () => (
 )
 
 const Hero = () => (
-  <div className="">
+  <div className="pb-24">
     <div className="mt-10 flex flex-col lg:items-center lg:flex-row container px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
       <div className="sm:text-center lg:text-left order-2">
         <h2 className="font-display text-4xl text-fg-accent tracking-tight leading-10 sm:text-5xl sm:leading-none md:text-6xl font-extrabold">
@@ -57,11 +59,14 @@ const Hero = () => (
           'lg:pl-24 lg:mt-0 lg:mb-0 lg:max-w-xl lg:w-full',
         )}
       >
-        <img
-          src="/mockup.svg"
-          alt="Pillar Dashbaord Illustration"
-          className="shadow-2xl block w-full rounded-md"
-        />
+        {/* <BrowserFrame>
+          <img
+            src="/mockup.svg"
+            alt="Pillar Dashbaord Illustration"
+            className="shadow-2xl block w-full rounded-md"
+          />
+        </BrowserFrame> */}
+        <DashMockup />
       </div>
     </div>
   </div>

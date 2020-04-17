@@ -11,7 +11,7 @@ const NavLink: React.SFC<{ href: string }> = ({ href, children }) => (
 const Nav = () => {
   return (
     <nav>
-      <div className="bar dark:bg-purple-600 h-1 block w-full bg-cover bg-center" />
+      <div className="bar dark:bg-fg-accent h-1 block w-full bg-cover bg-center" />
       <div className="container px-4 sm:px-6 lg:px-8 py-8 flex justify-between items-center">
         <Logo />
 

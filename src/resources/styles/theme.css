@@ -9,8 +9,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --page-primary: #22222d;
     --page-primary: theme('colors.gray.900');
-    --page-secondary: theme('colors.gray.700');
+    --page-secondary: theme('colors.gray.800');
 
     --fg-primary: theme('colors.white');
     --fg-secondary: theme('colors.gray.300');
@@ -20,4 +21,11 @@
 
 body {
   @apply bg-page-primary text-fg-primary;
+}
+
+* {
+  font-weight: inherit;
+  text-rendering: optimizeLegibility;
+  appearance: none;
+  @apply antialiased appearance-none;
 }
