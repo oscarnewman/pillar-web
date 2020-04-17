@@ -25,17 +25,17 @@ const PostDetail: React.SFC<PostDetailProps> = ({ post }) => {
     <BasicPage title={post.title}>
       <div className="h-12"></div>
       <div className="max-w-5xl mx-auto">
-        <div className="px-24">
+        <div className="px-0 lg:px-24">
           {post.primary_tag && (
-            <div className="text-purple-600 font-medium mb-2">
+            <div className="text-fg-accent font-medium mb-2">
               {post.primary_tag.name}
             </div>
           )}
-          <h1 className="font-sans text-4xl text-gray-900 tracking-tight leading-10 sm:text-5xl sm:leading-none md:text-6xl font-extrabold">
+          <h1 className="font-sans text-4xl text-fg-primary tracking-tight leading-10 sm:text-5xl sm:leading-none md:text-6xl font-extrabold">
             {post.title}
           </h1>
-          <div className="mt-4 text-gray-600">
-            <div className="text-gray-900">{post.primary_author.name}</div>
+          <div className="mt-4 text-fg-secondary">
+            <div className="text-fg-primary">{post.primary_author.name}</div>
             <div className="flex">
               <div>{post.reading_time} min read</div>
               <div className="w-2"></div>
@@ -55,18 +55,28 @@ const PostDetail: React.SFC<PostDetailProps> = ({ post }) => {
           </div>
         )}
         <div
-          className="text-xl text-gray-900 leading-9 GLOBAL-post-article"
+          className="post-content post-full-content max-w-xl mx-auto text-xl"
           dangerouslySetInnerHTML={{ __html: post.html }}
         ></div>
       </div>
       <style jsx global>{`
-        .GLOBAL-post-article p {
-          @apply mb-8;
-          @apply px-24;
+        .article-md {
+          @apply text-lg max-w-xl mx-auto leading-relaxed text-fg-primary;
         }
 
-        .GLOBAL-post-article > * {
-          @apply mb-8 block;
+        .article-md h1 {
+          @apply text-2xl;
+        }
+
+        .article-md h2 {
+          @apply text-2xl mb-4;
+        }
+
+        .article-md p,
+        .article-md pre,
+        .article-md ul,
+        .article-md ol {
+          @apply mb-4;
         }
       `}</style>
     </BasicPage>
@@ -85,12 +95,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await Ghost.posts.browse({ limit: 'all' })
+  let posts = await Ghost.posts.browse({ limit: 'all' })
+
   return {
     paths: posts.map((p) => ({
       params: { slug: p.slug },
     })),
-    fallback: true,
+    fallback: false,
   }
 }
 

@@ -1,8 +1,7 @@
 import ReactGA from 'react-ga'
-import debug from 'debug'
 
 const IS_BROWSER = typeof window !== 'undefined'
-const log = debug('analytics')
+const log = console.log
 
 export const dev = {
   init(code) {

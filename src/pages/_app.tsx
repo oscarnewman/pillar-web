@@ -1,12 +1,12 @@
-import App from 'next/app'
-import '../resources/styles/tailwind.css'
-import '../resources/styles/theme.css'
-import '../resources/styles/nprogress.css'
-import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 import nProgress from 'nprogress'
-import Router, { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import '../resources/styles/ghost.css'
 import Head from '../components/util/Head'
 import { useGA } from '../hooks/useGA'
+import '../resources/styles/nprogress.css'
+import '../resources/styles/tailwind.css'
+import '../resources/styles/theme.css'
 
 function BaseApp(props) {
   const router = useRouter()
