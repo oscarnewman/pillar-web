@@ -22,17 +22,17 @@ const MCOption: React.SFC<{
   <button
     onClick={onClick}
     className={cn(
-      'px-4 py-2 border border-gray-100 shadow-sm hover:bg-gray-25',
+      'px-4 py-2 border border-gray-100 dark:border-gray-800 shadow-sm',
       'rounded transition-all duration-150 w-full text-left',
-      'text-gray-600 font-medium',
-      'flex items-center justify-start',
+      'text-gray-800 dark:text-gray-100 font-medium',
+      'flex items-center justify-start focus:outline-none',
       {
-        'bg-purple-50 text-purple-400  border-purple-100 hover:bg-purple-50 hover:text-purple-600': selected,
+        'bg-purple-50 dark:bg-gray-darkest text-purple-400 dark:text-gray-100 border-purple-100': selected,
       },
     )}
   >
     {optionKey && (
-      <div className="w-6 h-6 flex items-center justify-center bg-purple-50 rounded text-purple-200 mr-4">
+      <div className="w-6 h-6 flex items-center justify-center bg-purple-50 dark:bg-gray-800 rounded text-purple-200 mr-4">
         {optionKey}
       </div>
     )}
@@ -49,7 +49,9 @@ const MultipleChoiceQuestion: React.SFC<MCProps> = ({
 }) => {
   return (
     <div className="text-left w-full">
-      <h3 className="text-gray-800 text-lg font-medium">{question}</h3>
+      <h3 className="text-gray-600 dark:text-gray-100 text-lg font-medium">
+        {question}
+      </h3>
       <div className="h-4"></div>
 
       {options.map((option, i) => (

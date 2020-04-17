@@ -1,16 +1,13 @@
-import React, { useState } from 'react'
-import Head from '../components/util/Head'
-import Logo from '../components/ui/Logo'
-import Container from '../components/util/Container'
-import BasicPage from '../components/layout/BasicPage'
 import cn from 'classnames'
-import SecondaryButton from '../components/ui/SecondaryButton'
-import PrimaryButton from '../components/ui/PrimaryButton'
+import React, { useState } from 'react'
+import { animated } from 'react-spring'
+import BasicPage from '../components/layout/BasicPage'
+import MultipleChoiceQuestion from '../components/MultipleChoiceQuestion'
 import useMultistepForm, {
   FormStepProps,
 } from '../components/MultistepForm/useMultistepForm'
-import { animated, useSpring } from 'react-spring'
-import MultipleChoiceQuestion from '../components/MultipleChoiceQuestion'
+import SecondaryButton from '../components/ui/SecondaryButton'
+import Container from '../components/util/Container'
 
 const Section = ({ children, enabled = true }) => (
   <section
@@ -73,7 +70,7 @@ const CauseToggleBox = ({ cause, toggled = false, onClick }) => (
     <button
       onClick={onClick}
       className={cn(
-        'sm:p-6 px-4 py-2 border border-gray-100 shadow-sm hover:bg-gray-25',
+        'sm:p-6 px-4 py-2 border border-gray-100 dark:border-gray-800 shadow-sm hover:bg-gray-25',
         'rounded transition-all duration-150 w-full text-left',
         { 'pointer-events-none opacity-50': !cause.active },
         // { 'bg-gray-900 text-white hover:bg-gray-800': toggled },
@@ -111,7 +108,7 @@ const InitialSection: React.SFC<FormStepProps> = ({ advanceForm }) => (
   <Section>
     <div
       className={cn(
-        'sm:p-12 p-6 bg-gray-900 text-white border-gray-100 shadow-2xl',
+        'sm:p-12 p-6 bg-gray-900 dark:bg-gray-darkest text-white border-gray-100 shadow-2xl',
         'rounded transition-all duration-150  text-left',
       )}
     >
@@ -143,17 +140,11 @@ const Quiz = () => {
   const left = needed - chosen
 
   return (
-    <BasicPage title="Build your Plan | Pillar">
-      <Container>
-        <div className="h-6 md:h-12"></div>
+    <BasicPage title="Build your Plan | Pillar" contained={false}>
+      <div className="h-6 md:h-12"></div>
+      <div className="relative max-w-full overflow-hidden">
         <AnimatedQuiz></AnimatedQuiz>
-        {/* <CauseSection
-                    chosenCauses={chosenCauses}
-                    setCauses={setCauses}
-                ></CauseSection>
-
-                <PreferencesSection enabled={left <= 0}></PreferencesSection> */}
-      </Container>
+      </div>
     </BasicPage>
   )
 }
@@ -304,33 +295,29 @@ const AnimatedQuiz = () => {
     },
   })
 
-  const props = useSpring({ height: 'auto' })
-
   return (
-    <animated.div
-      style={props}
-      className="relative transition-all duration-150"
-    >
-      {transitions.map(({ item, props, key }) => {
-        const CurrentStep = steps[item.name]
-        return (
-          <animated.div
-            key={key}
-            style={{
-              ...props,
-              width: '100%',
-            }}
-          >
-            <CurrentStep
-              advanceForm={advanceForm}
-              form={form}
-              setForm={setForm}
-              back={back}
-            />
-          </animated.div>
-        )
-      })}
-    </animated.div>
+    <div className="relative w-full max-w-full ">
+      <Container>
+        {transitions.map(({ item, props, key }) => {
+          const CurrentStep = steps[item.name]
+          return (
+            <animated.div
+              key={key}
+              style={{
+                ...props,
+              }}
+            >
+              <CurrentStep
+                advanceForm={advanceForm}
+                form={form}
+                setForm={setForm}
+                back={back}
+              />
+            </animated.div>
+          )
+        })}
+      </Container>
+    </div>
   )
 }
 

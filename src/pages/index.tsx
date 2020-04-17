@@ -20,28 +20,21 @@ const Home = () => (
 
 const Hero = () => (
   <div className="pb-24">
-    <div className="mt-10 flex flex-col lg:items-center lg:flex-row container px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+    <div className="mt-10 flex flex-col lg:items-center lg:flex-row container px-4 sm:mt-12 px-6 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
       <div className="sm:text-center lg:text-left order-2">
-        <h2 className="font-display text-4xl text-fg-accent tracking-tight leading-10 sm:text-5xl sm:leading-none md:text-6xl font-extrabold">
+        <h2 className="font-display text-4xl text-fg-accent sm:tracking-tight leading-10 sm:text-5xl leading-tighter sm:leading-none md:text-6xl font-extrabold">
           Meet Pillar, <br className="" />
           <span className="text-fg-primary">
             Your Personal Philanthropic Advisor
           </span>
         </h2>
-        <p className="mt-3 text-base text-fg-secondary sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+        <p className="mt-3 text-base text-fg-secondary sm:mt-5 text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
           Pillar handles the hard parts of giving. Tell Pillar what matters to
           you, and it manages your giving in real time.
         </p>
-        <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+        <div className="mt-6 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
           <div>
-            <PrimaryButton
-              block
-              href="/quiz"
-              afterIcon={
-                <i className="fas fa-arrow-right ml-3 text-indigo-300" />
-              }
-              large
-            >
+            <PrimaryButton block href="/quiz" large>
               Start your portfolio
             </PrimaryButton>
           </div>

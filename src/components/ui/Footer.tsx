@@ -1,6 +1,7 @@
 import React from 'react'
 import Logo from './Logo'
 import Link from 'next/link'
+import Container from '../util/Container'
 
 interface LinkProps {
   href?: string
@@ -14,7 +15,7 @@ const FooterLink: React.SFC<LinkProps> = ({ children, href = '/' }) => (
 )
 
 const Footer = () => (
-  <div className="bg-page-primary w-full">
+  <Container>
     <div className="container px-4 sm:px-6 lg:px-8">
       <div className="mx-auto border-t pt-8 pb-16 light:border-gray-50 dark:border-gray-800 flex items-center justify-between">
         <div className="max-w-xs">
@@ -33,7 +34,7 @@ const Footer = () => (
         </nav>
       </div>
     </div>
-  </div>
+  </Container>
 )
 
 export default Footer

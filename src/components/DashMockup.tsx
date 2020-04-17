@@ -5,7 +5,7 @@ const DashMockup = () => {
     <BrowserFrame>
       <div className="w-full h-full bg-page-primary dark:bg-gray-darkest leading-7">
         <div className="bg-fg-accent h-1 w-full opacity-25"></div>
-        <div className="px-24 my-6">
+        <div className="px-8 sm:px-16 md:px-24 my-6">
           <h2 className="text-lg text-fg-secondary">
             Your Giving for <strong>December, 2019</strong>
           </h2>
@@ -36,7 +36,7 @@ const DashMockup = () => {
           </div>
           <div className="pl-6 text-sm font-medium">
             <div className="flex justify-between items-center">
-              <p>🚑 First Responder Support </p>
+              <p>🚑 First Responders </p>
               <p className="text-fg-secondary">$4.00</p>
             </div>
             <div className="flex justify-between items-center">

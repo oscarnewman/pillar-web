@@ -49,7 +49,7 @@ const useMultistepForm = (initialStep: string) => {
       position: 'absolute',
     },
     enter: {
-      transform: `translate3d(0,0px,0)`,
+      transform: `translate3d(0,0,0)`,
       opacity: 1,
       position: 'relative',
     },

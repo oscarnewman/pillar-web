@@ -4,13 +4,17 @@ import Nav from '../ui/Nav'
 import Container from '../util/Container'
 import Footer from '../ui/Footer'
 
-const BasicPage: React.SFC<{ title?: string }> = ({ title, children }) => {
+const BasicPage: React.SFC<{ title?: string; contained?: boolean }> = ({
+  title,
+  children,
+  contained = true,
+}) => {
   return (
     <div className="min-h-full flex flex-col">
       <div className="flex-1">
         <Head title={title} />
         <Nav></Nav>
-        <Container>{children}</Container>
+        {contained ? <Container>{children}</Container> : children}
       </div>
       <Footer></Footer>
     </div>
