@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import nProgress from 'nprogress'
 import Router from 'next/router'
 import Head from '../components/util/Head'
+import withGA from 'next-ga'
 
 class BaseApp extends App {
   constructor(props) {
@@ -31,4 +32,4 @@ class BaseApp extends App {
   }
 }
 
-export default BaseApp
+export default withGA('UA-148813695-2', Router)(BaseApp)
