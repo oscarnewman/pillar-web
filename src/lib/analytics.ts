@@ -1,7 +1,7 @@
 import ReactGA from 'react-ga'
 
 const IS_BROWSER = typeof window !== 'undefined'
-const log = console.log
+const log = (msg) => {}
 
 export const dev = {
   init(code) {

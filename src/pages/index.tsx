@@ -1,22 +1,32 @@
-import React from 'react'
-import Logo from '../components/ui/Logo'
-import Nav from '../components/ui/Nav'
+import { useQuery } from '@apollo/react-hooks'
+import { gql } from 'apollo-boost'
 import cn from 'classnames'
+import React from 'react'
+import DashMockup from '../components/DashMockup'
+import Footer from '../components/ui/Footer'
+import Nav from '../components/ui/Nav'
 import PrimaryButton from '../components/ui/PrimaryButton'
 import SecondaryButton from '../components/ui/SecondaryButton'
-import Footer from '../components/ui/Footer'
-import BrowserFrame from '../components/ui/BrowserFrame'
-import DashMockup from '../components/DashMockup'
+import { withApollo } from '../lib/initApollo'
 
-const Home = () => (
-  <div className="min-h-full flex flex-col">
-    <div className="flex-1">
-      <Nav></Nav>
-      <Hero></Hero>
+const Home = () => {
+  const { data, loading, error } = useQuery(gql`
+    query {
+      test
+    }
+  `)
+  return (
+    <div className="min-h-full flex flex-col">
+      <div className="flex-1">
+        {loading}
+        <pre>{JSON.stringify(data, null, 2)}</pre>
+        <Nav></Nav>
+        <Hero></Hero>
+      </div>
+      <Footer></Footer>
     </div>
-    <Footer></Footer>
-  </div>
-)
+  )
+}
 
 const Hero = () => (
   <div className="pb-24">
@@ -65,4 +75,4 @@ const Hero = () => (
   </div>
 )
 
-export default Home
+export default withApollo({ ssr: true })(Home)

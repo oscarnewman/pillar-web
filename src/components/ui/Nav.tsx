@@ -1,6 +1,6 @@
+import Link from 'next/link'
 import React from 'react'
 import Logo from './Logo'
-import Link from 'next/link'
 
 const NavLink: React.SFC<{ href: string }> = ({ href, children }) => (
   <Link href={href}>

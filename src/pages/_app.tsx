@@ -7,6 +7,8 @@ import { useGA } from '../hooks/useGA'
 import '../resources/styles/nprogress.css'
 import '../resources/styles/tailwind.css'
 import '../resources/styles/theme.css'
+import { Providers } from '../components/Providers'
+import { DeferredGlobalLoads } from '../components/DeferredGlobalLoads'
 
 function BaseApp(props) {
   const router = useRouter()
@@ -26,8 +28,11 @@ function BaseApp(props) {
   const { Component, pageProps } = props
   return (
     <>
-      <Head></Head>
-      <Component {...pageProps} />
+      <Providers>
+        <Head></Head>
+        <Component {...pageProps} />
+        <DeferredGlobalLoads />
+      </Providers>
     </>
   )
 }

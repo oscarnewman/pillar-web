@@ -3,6 +3,7 @@ import LoginForm from '../components/LoginForm'
 import Head from '../components/util/Head'
 import Logo from '../components/ui/Logo'
 import Link from 'next/link'
+import { withApollo } from '../lib/initApollo'
 
 const SignIn = () => {
   return (
@@ -13,13 +14,13 @@ const SignIn = () => {
           <div className="flex mb-6 flex-col items-start w-full">
             <Logo />
             <div className="h-6"></div>
-            <h2 className="mt-6 text-center text-3xl leading-9 font-bold text-gray-900">
+            <h2 className="mt-6 text-center text-3xl leading-9 font-bold text-fg-primary">
               Sign in to your account
             </h2>
-            <p className="mt-2 text-center text-sm leading-5 text-gray-600">
+            <p className="mt-2 text-center text-sm leading-5 text-fg-secondary">
               Or{' '}
               <Link href="/signup">
-                <a className="link focus:outline-none focus:underline transition ease-in-out duration-150">
+                <a className="text-fg-accent focus:outline-none focus:underline transition ease-in-out duration-150">
                   sign up and build a profile
                 </a>
               </Link>
@@ -37,4 +38,4 @@ const SignIn = () => {
   )
 }
 
-export default SignIn
+export default withApollo({ ssr: false })(SignIn)

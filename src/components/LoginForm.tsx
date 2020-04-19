@@ -1,14 +1,35 @@
+import { useMutation } from '@apollo/react-hooks'
+import { gql } from 'apollo-boost'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
-import PrimaryButton from './ui/PrimaryButton'
 import TextInput from './ui/form/TextInput'
-import axios from 'axios'
+import PrimaryButton from './ui/PrimaryButton'
+import Axios from 'axios'
 import { AuthService } from '../services/AuthService'
-import { Router, useRouter } from 'next/router'
+
+const LOGIN = gql`
+  mutation Login($email: String!, $password: String!) {
+    login(email: $email, password: $password)
+  }
+`
 
 const LoginForm = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const auth = new AuthService()
+
+  const [login] = useMutation(LOGIN, {
+    onCompleted: async () => {
+      // router.push('/')
+      setLoading(false)
+    },
+    onError: () => {
+      setError('You done fucked up')
+      setLoading(false)
+    },
+  })
 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -16,15 +37,12 @@ const LoginForm = () => {
   const router = useRouter()
 
   const handleSubmit = async (e) => {
-    setLoading(true)
     e.preventDefault()
-    const authService = new AuthService()
-    authService
-      .login(email, password)
-      .then(console.log)
-      .then(() => router.push('/'))
-      .catch(() => setError('Your email and/or password were incorrect.'))
-      .finally(() => setLoading(false))
+    auth.login(email, password)
+    setLoading(true)
+    login({
+      variables: { email, password },
+    })
   }
 
   return (

@@ -5,7 +5,7 @@ const Logo = () => {
     <Link href="/">
       <a>
         <img
-          src="/LogoBoxBig.png"
+          src="/Logo.png"
           alt="Pillar Logo"
           className="shadow-lg w-24 rounded"
         />
