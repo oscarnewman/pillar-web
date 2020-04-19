@@ -6,6 +6,8 @@ const Logo = () => {
       <a>
         <img
           src="/Logo.png"
+          width="96"
+          height="54"
           alt="Pillar Logo"
           className="shadow-lg w-24 rounded"
         />
