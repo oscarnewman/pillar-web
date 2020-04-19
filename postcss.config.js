@@ -1,19 +1,5 @@
 module.exports = {
   plugins: {
-    ...(process.env.NODE_ENV === `production`
-      ? {
-          '@fullhuman/postcss-purgecss': {
-            content: [
-              './src/**/*.tsx',
-              './src/**/*.ts',
-              './src/**/*.jsx',
-              './src/**/*.js',
-            ],
-            defaultExtractor: (content) =>
-              content.match(/[\w-/:]+(?<!:)/g) || [],
-          },
-        }
-      : {}),
     'postcss-flexbugs-fixes': {},
     'postcss-preset-env': {
       autoprefixer: {
@@ -25,5 +11,22 @@ module.exports = {
       },
     },
     tailwindcss: {},
+    ...(process.env.NODE_ENV === 'production'
+      ? {
+          '@fullhuman/postcss-purgecss': {
+            content: [
+              './src/**/*.tsx',
+              './src/**/*.ts',
+              './src/**/*.jsx',
+              './src/**/*.js',
+            ],
+            // make sure css reset isnt removed on html and body
+            whitelist: ['html', 'body'],
+            defaultExtractor: (content) =>
+              content.match(/[\w-/:]+(?<!:)/g) || [],
+            rejected: true,
+          },
+        }
+      : {}),
   },
 }
