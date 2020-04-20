@@ -36,3 +36,17 @@ button {
 input {
   appearance: none;
 }
+
+.wf-loading {
+  opacity: 0;
+}
+
+.wf-active {
+  -webkit-transition: opacity 0.25s ease-in;
+  transition: opacity 0.25s ease-in;
+  opacity: 1;
+}
+
+.wf-inactive {
+  opacity: 1;
+}

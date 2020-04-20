@@ -1,6 +1,7 @@
 export const DeferredGlobalLoads = () => {
   return (
     <>
+      <link rel="stylesheet" href="https://use.typekit.net/ork8qsw.css"></link>
       {/* <link rel="stylesheet" href="https://use.typekit.net/lmf4atf.css" />
 
       <link
