@@ -194,6 +194,28 @@ const CauseSection: React.SFC<FormStepProps> = ({
   )
 }
 
+const questions = [
+  {
+    title:
+      'Would you rather give to an established, national charity, or an local upstart with promising early results',
+    options: [
+      { name: `I'd trust the national charity`, id: 'big' },
+      {
+        name: `I'd give to the local charity, even if its riskier.`,
+        id: 'small',
+      },
+      {
+        name: `I'd give to both`,
+        id: 'same',
+      },
+      {
+        name: `I'm not sure`,
+        id: 'idk',
+      },
+    ],
+  },
+]
+
 const PreferencesSection: React.SFC<FormStepProps> = ({
   form,
   setForm,
@@ -215,7 +237,13 @@ const PreferencesSection: React.SFC<FormStepProps> = ({
 
       <div className="w-full mx-auto flex flex-col items-start max-w-lg">
         <div className="h-12"></div>
-
+        {questions.map((q) => (
+          <MultipleChoiceQuestion
+            key={q.title}
+            question={q.title}
+            options={q.options}
+          ></MultipleChoiceQuestion>
+        ))}
         <MultipleChoiceQuestion
           question="Do you agree with the concept of charity?"
           selected={form.preferences.charity}
@@ -227,9 +255,7 @@ const PreferencesSection: React.SFC<FormStepProps> = ({
             { name: 'Hardly ever', id: 'no' },
           ]}
         />
-
         <div className="h-6"></div>
-
         <MultipleChoiceQuestion
           question="Which part of the environment do you care about the most?"
           options={[
