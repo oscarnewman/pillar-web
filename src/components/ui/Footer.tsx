@@ -6,14 +6,20 @@ import Container from '../util/Container'
 interface LinkProps {
   href?: string
 }
-const FooterLink: React.SFC<LinkProps> = ({ children, href = '/' }) => (
-  <Link href={href}>
-    <a className="no-underline text-fg-primary font-medium text-sm ml-4">
-      {children}
-    </a>
-  </Link>
-)
-
+const FooterLink: React.SFC<LinkProps> = ({ children, href = '/' }) => {
+  const localLink = href.startsWith('mailto:')
+  const ContainerLink = localLink ? React.Fragment : Link
+  return (
+    <ContainerLink href={localLink ? null : href}>
+      <a
+        className="no-underline text-fg-primary font-medium text-sm ml-4"
+        href={href}
+      >
+        {children}
+      </a>
+    </ContainerLink>
+  )
+}
 const Footer = () => (
   <Container>
     <div className="container px-4 sm:px-6 lg:px-8">

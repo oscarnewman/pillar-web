@@ -20,7 +20,8 @@ export class AuthService {
     }
   }
 
-  private establishCSRFProtection(): Promise<any> {
+  public establishCSRFProtection(): Promise<any> {
+    Axios.defaults.withCredentials = true
     return Axios.get(`${process.env.API_URL}/sanctum/csrf-cookie`)
   }
 }

@@ -6,7 +6,7 @@ const env = {
   GQL_URL: prod
     ? 'https://api.pillar.gives/graphql'
     : 'http://localhost:8000/graphql',
-  BASE_URL: prod ? 'https://pillar.gives' : 'http://localhost:3000',
+  BASE_URL: prod ? 'https://pillar.gives' : 'https://localhost:3000',
   STRIPE_KEY: prod
     ? 'pk_live_3jLMLDZZo9MhvOMvWl6U7tnJ'
     : 'pk_test_Aa9HCt6t96ix37gxvpeqOKYL',

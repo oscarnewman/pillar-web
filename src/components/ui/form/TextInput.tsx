@@ -45,7 +45,7 @@ const TextInput: React.FC<InputProps> = ({
       <input
         type={type}
         value={format(realValue)}
-        className={cn('form-input form-input-dark block w-full', {
+        className={cn('form-input block w-full', {
           'border-red-500 text-red-600 ': error,
           'pl-8': icon,
         })}

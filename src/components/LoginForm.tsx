@@ -1,12 +1,12 @@
 import { useMutation } from '@apollo/react-hooks'
+import { Stack, useForm } from '@oscarnewman/twist'
 import { gql } from 'apollo-boost'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
+import { AuthService } from '../services/AuthService'
 import TextInput from './ui/form/TextInput'
 import PrimaryButton from './ui/PrimaryButton'
-import Axios from 'axios'
-import { AuthService } from '../services/AuthService'
 
 const LOGIN = gql`
   mutation Login($email: String!, $password: String!) {
@@ -22,11 +22,11 @@ const LoginForm = () => {
 
   const [login] = useMutation(LOGIN, {
     onCompleted: async () => {
-      // router.push('/')
+      router.push('/')
       setLoading(false)
     },
     onError: () => {
-      setError('You done fucked up')
+      setError('Something went wrong')
       setLoading(false)
     },
   })
@@ -38,42 +38,56 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    auth.login(email, password)
+    await auth.establishCSRFProtection()
+    // await auth.login(email, password)
     setLoading(true)
     login({
       variables: { email, password },
     })
   }
 
+  // const { data, props } = useForm({
+  //   email: {
+  //     type: 'email',
+  //     required: true,
+  //   },
+  //   password: {
+  //     type: 'password',
+  //     required: true,
+  //   },
+  // })
+
   return (
     <form className="w-full" onSubmit={handleSubmit}>
-      <div className="w-full block ">
-        <TextInput
-          title="Email"
-          type="email"
-          name="email"
-          error={error}
-          required
-          className="mb-6"
-          value={email}
-          onChange={setEmail}
-        />
-        <div className="mb-12">
+      <Stack space={12}>
+        <Stack space={6}>
           <TextInput
-            title="Password"
-            name="password"
-            type="password"
+            // {...props.email}
+            // title="Email"
+            // type="email"
+            // name="email"
             error={error}
             required
-            value={password}
-            onChange={setPassword}
+            // value={email}
+            // onChange={setEmail}
           />
-          <Link href="/login">
-            <a className="link text-sm inline-block mt-2">
-              Forgot your password?
-            </a>
-          </Link>
-        </div>
+
+          <Stack space={2}>
+            <TextInput
+              title="Password"
+              name="password"
+              type="password"
+              error={error}
+              required
+              value={password}
+              onChange={setPassword}
+            />
+            <Link href="/login">
+              <a className="link text-sm inline-block">Forgot your password?</a>
+            </Link>
+          </Stack>
+        </Stack>
+
         <PrimaryButton
           loading={loading}
           block
@@ -85,10 +99,10 @@ const LoginForm = () => {
         {/* <p className="mt-4 w-full text-center">
           No account?{' '}
           <Link href="/signup">
-            <a className="link">Sign up</a>
+          <a className="link">Sign up</a>
           </Link>
         </p> */}
-      </div>
+      </Stack>
     </form>
   )
 }

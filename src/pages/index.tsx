@@ -1,5 +1,3 @@
-import { useQuery } from '@apollo/react-hooks'
-import { gql } from 'apollo-boost'
 import cn from 'classnames'
 import React from 'react'
 import DashMockup from '../components/DashMockup'
@@ -17,7 +15,8 @@ const Home = () => {
         <Hero />
         <Story />
       </div>
-      <Footer></Footer>
+
+      <Footer />
     </div>
   )
 }
@@ -134,13 +133,6 @@ const Hero = () => (
           'lg:pl-24 lg:mt-0 lg:mb-0 lg:max-w-xl lg:w-full',
         )}
       >
-        {/* <BrowserFrame>
-          <img
-            src="/mockup.svg"
-            alt="Pillar Dashbaord Illustration"
-            className="shadow-2xl block w-full rounded-md"
-          />
-        </BrowserFrame> */}
         <DashMockup />
       </div>
     </div>

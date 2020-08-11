@@ -9,7 +9,7 @@ import '../resources/styles/tailwind.css'
 import '../resources/styles/theme.css'
 import { Providers } from '../components/Providers'
 import { DeferredGlobalLoads } from '../components/DeferredGlobalLoads'
-import Sentry from '@sentry/browser'
+import * as Sentry from '@sentry/browser'
 
 Sentry.init({
   dsn:

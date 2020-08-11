@@ -23,17 +23,17 @@ export default function createApolloClient(initialState, ctx) {
     fetch: buildAxiosFetch(axios),
     credentials: 'include',
     cache: new InMemoryCache().restore(initialState),
-    request: (operation) => {
-      operation.setContext({
-        headers: {
-          ...(!!authCredentials && !!authCredentials.xsrf
-            ? {
-                Cookie: authCredentials.cookie,
-                'x-xsrf-token': authCredentials.xsrf,
-              }
-            : {}),
-        },
-      })
-    },
+    // request: (operation) => {
+    //   operation.setContext({
+    //     headers: {
+    //       ...(!!authCredentials && !!authCredentials.xsrf
+    //         ? {
+    //             Cookie: authCredentials.cookie,
+    //             'x-xsrf-token': authCredentials.xsrf,
+    //           }
+    //         : {}),
+    //     },
+    //   })
+    // },
   })
 }
