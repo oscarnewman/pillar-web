@@ -24,11 +24,6 @@
     }
   },
   "rules": {
-    // "@typescript-eslint/": 0,
-    // "@typescript-eslint/no-unused-vars": [
-    //   "on",
-    //   { "argsIgnorePattern": "^_", "varsIgnorePattern": "^ignored?$" }
-    // ],
     "no-unused-vars": 0,
     "@typescript-eslint/no-unused-vars-experimental": 0,
     "space-before-function-paren": 0,
