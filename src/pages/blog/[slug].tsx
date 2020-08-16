@@ -1,11 +1,10 @@
 import { PostOrPage } from '@tryghost/content-api'
-import { GetStaticProps, GetStaticPaths } from 'next'
+import moment from 'moment'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { useRouter } from 'next/router'
 import React from 'react'
 import BasicPage from '../../components/layout/BasicPage'
-import { Ghost } from '../../api/GhostAPI'
-import { useRouter } from 'next/router'
 import Spinner from '../../components/ui/Spinner'
-import moment from 'moment'
 
 interface PostDetailProps {
   post: PostOrPage
@@ -97,7 +96,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await Ghost.posts.browse({ limit: 'all' })
+  // const posts = await Ghost.posts.browse({ limit: 'all' })
+  const posts = []
 
   return {
     paths: posts.map((p) => ({

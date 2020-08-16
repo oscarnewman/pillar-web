@@ -7,4 +7,4 @@ import GhostContentAPI from '@tryghost/content-api'
 //   version: 'v3',
 // })
 
-const Ghost = {}
+export const Ghost = {}
