@@ -31,7 +31,6 @@
     "swr": "^0.2.0"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^2.1.2",
     "@tailwindcss/custom-forms": "tailwindcss/custom-forms",
     "@types/classnames": "^2.2.10",
     "@types/node": "^13.11.1",
