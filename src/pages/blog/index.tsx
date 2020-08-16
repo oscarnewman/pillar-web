@@ -31,7 +31,7 @@ const Index: React.SFC<IndexProps> = ({ posts }) => {
         {posts.map((post) => (
           <>
             <PostPreview post={post} />
-            <div className="h-12"></div>
+            <div className="h-12" />
           </>
         ))}
       </div>
@@ -40,10 +40,12 @@ const Index: React.SFC<IndexProps> = ({ posts }) => {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const posts = await Ghost.posts.browse({
-    limit: 'all',
-    include: ['authors', 'tags'],
-  })
+  // const posts = await Ghost.posts.browse({
+  //   limit: 'all',
+  //   include: ['authors', 'tags'],
+  // })
+
+  const posts = []
 
   return {
     props: { posts },

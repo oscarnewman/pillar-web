@@ -16,14 +16,14 @@ const PostDetail: React.SFC<PostDetailProps> = ({ post }) => {
   if (router.isFallback) {
     return (
       <BasicPage title="Blog | Pillar">
-        <Spinner></Spinner>
+        <Spinner />
       </BasicPage>
     )
   }
 
   return (
     <BasicPage title={post.title}>
-      <div className="h-12"></div>
+      <div className="h-12" />
       <div className="max-w-5xl mx-auto">
         <div className="px-0 lg:px-24">
           {post.primary_tag && (
@@ -38,9 +38,9 @@ const PostDetail: React.SFC<PostDetailProps> = ({ post }) => {
             <div className="text-fg-primary">{post.primary_author.name}</div>
             <div className="flex">
               <div>{post.reading_time} min read</div>
-              <div className="w-2"></div>
+              <div className="w-2" />
               <div>•</div>
-              <div className="w-2"></div>
+              <div className="w-2" />
               <div>{moment(post.published_at).fromNow()}</div>
             </div>
           </div>
@@ -57,7 +57,7 @@ const PostDetail: React.SFC<PostDetailProps> = ({ post }) => {
         <div
           className="post-content post-full-content max-w-xl mx-auto text-xl"
           dangerouslySetInnerHTML={{ __html: post.html }}
-        ></div>
+        />
       </div>
       <style jsx global>{`
         .article-md {
@@ -84,10 +84,12 @@ const PostDetail: React.SFC<PostDetailProps> = ({ post }) => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = await Ghost.posts.read(
-    { slug: params.slug as string },
-    { include: ['authors', 'tags'] },
-  )
+  // const post = await Ghost.posts.read(
+  //   { slug: params.slug as string },
+  //   { include: ['authors', 'tags'] },
+  // )
+
+  const post = null
 
   return {
     props: { post },
@@ -95,7 +97,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  let posts = await Ghost.posts.browse({ limit: 'all' })
+  const posts = await Ghost.posts.browse({ limit: 'all' })
 
   return {
     paths: posts.map((p) => ({
