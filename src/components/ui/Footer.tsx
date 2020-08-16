@@ -8,7 +8,7 @@ interface LinkProps {
 }
 const FooterLink: React.SFC<LinkProps> = ({ children, href = '/' }) => {
   const localLink = href.startsWith('mailto:')
-  const ContainerLink = localLink ? React.Fragment : Link
+  const ContainerLink = localLink ? 'div' : Link
   return (
     <ContainerLink href={localLink ? null : href}>
       <a

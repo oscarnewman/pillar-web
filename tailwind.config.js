@@ -1,7 +1,7 @@
 const theme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  purge: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
+  purge: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     container: {
       center: true,
