@@ -19,19 +19,11 @@ const Nav = () => {
           <Link href="/signin">
             <a className="text-fg-secondary text-lg font-medium">
               Dashboard{' '}
-              <i className="fas fa-arrow-right ml-1 text-purple-200"></i>
+              <i className="fas fa-arrow-right ml-1 text-purple-200" />
             </a>
           </Link>
         </section>
       </div>
-
-      <style jsx>{`
-        @screen light {
-          .bar {
-            background-image: url('/navbg.svg');
-          }
-        }
-      `}</style>
     </nav>
   )
 }

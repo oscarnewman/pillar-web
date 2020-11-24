@@ -13,10 +13,10 @@ const BasicPage: React.SFC<{ title?: string; contained?: boolean }> = ({
     <div className="min-h-full flex flex-col">
       <div className="flex-1">
         <Head title={title} />
-        <Nav></Nav>
+        <Nav />
         {contained ? <Container>{children}</Container> : children}
       </div>
-      <Footer></Footer>
+      <Footer />
     </div>
   )
 }

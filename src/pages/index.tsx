@@ -25,7 +25,7 @@ const Story = () => {
   return (
     <section>
       <Container>
-        <div className="max-w-2xl mx-auto text-xl py-24  leading-10 ">
+        <div className="prose prose-xl max-w-2xl mx-auto py-24 leading-10 ">
           <p>Giving is pretty hard.</p>
           <p>
             Sure, you can give now and then to a couple of the charity's you've
@@ -73,18 +73,6 @@ const Story = () => {
           @apply uppercase tracking-wide text-lg font-bold;
         }
 
-        @screen dark {
-          section {
-            background: linear-gradient(
-              theme(colors.black),
-              theme(colors.page.primary)
-            );
-             {
-              /* background: black; */
-            }
-          }
-        }
-
         .drop {
           float: left;
           @apply font-display;
@@ -101,7 +89,7 @@ const Story = () => {
 
 const Hero = () => (
   <div className="pb-24">
-    <div className="mt-10 flex flex-col lg:items-center lg:flex-row container px-4 sm:mt-12 px-6 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+    <div className="mt-10 flex flex-col lg:items-center lg:flex-row container sm:mt-12 px-6 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
       <div className="sm:text-center lg:text-left order-2">
         <h2 className="font-display text-4xl text-fg-accent sm:tracking-tight leading-10 sm:text-5xl leading-tighter sm:leading-none md:text-6xl font-extrabold">
           Meet Pillar, <br className="" />
@@ -109,21 +97,33 @@ const Hero = () => (
             Your Personal Philanthropic Advisor
           </span>
         </h2>
-        <p className="mt-3 text-base text-fg-secondary sm:mt-5 text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+        <p className="mt-3 text-fg-secondary sm:mt-5 text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
           Pillar handles the hard parts of giving. Tell Pillar what matters to
           you, and it manages your giving in real time.
         </p>
         <div className="mt-6 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-          <div>
-            <PrimaryButton block href="/quiz" large>
-              Start your portfolio
-            </PrimaryButton>
-          </div>
-          <div className="mt-3 sm:mt-0 sm:ml-3">
-            <SecondaryButton block href="/test" large>
-              How it works
-            </SecondaryButton>
-          </div>
+          <form
+            action="https://formspree.io/f/mwkwnkno"
+            method="POST"
+            target="__BLANK"
+          >
+            <div className="flex flex-col sm:flex-row">
+              <input
+                type="email"
+                name="_replyto"
+                className="form-input sm:mr-4 mb-4 sm:mb-0"
+                placeholder="Email"
+                required
+              />
+              <button
+                type="submit"
+                className="bg-indigo-600 text-white font-bold shadow-lg px-3 py-2 rounded"
+              >
+                Get Updates
+                <i className="fas fa-paper-airplane" />
+              </button>
+            </div>
+          </form>
         </div>
       </div>
       <div

@@ -35,8 +35,8 @@ const Footer = () => (
 
         <nav>
           <FooterLink href="/legal/terms">Terms</FooterLink>
-          <FooterLink href="/legal/privacy">Privacy</FooterLink>
-          <FooterLink href="mailto:help@pillar.gives">Support</FooterLink>
+          {/* <FooterLink href="/legal/privacy">Privacy</FooterLink> */}
+          {/* <FooterLink href="mailto:help@pillar.gives">Support</FooterLink> */}
         </nav>
       </div>
     </div>

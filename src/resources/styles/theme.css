@@ -7,18 +7,6 @@
   --fg-accent: theme('colors.purple.600');
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --page-primary: #22222d;
-    --page-primary: theme('colors.gray.900');
-    --page-secondary: theme('colors.gray.800');
-
-    --fg-primary: theme('colors.white');
-    --fg-secondary: theme('colors.gray.300');
-    --fg-accent: theme('colors.purple.500');
-  }
-}
-
 body {
   @apply bg-page-primary text-fg-primary;
 }

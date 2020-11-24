@@ -20,6 +20,10 @@ const LoginForm = () => {
 
   const auth = new AuthService()
 
+  const fakeLogin = () => {
+    setError('This account does not exist.')
+  }
+
   const [login] = useMutation(LOGIN, {
     onCompleted: async () => {
       router.push('/')
@@ -38,12 +42,13 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await auth.establishCSRFProtection()
+    fakeLogin()
+    // await auth.establishCSRFProtection()
     // await auth.login(email, password)
-    setLoading(true)
-    login({
-      variables: { email, password },
-    })
+    // setLoading(true)
+    // login({
+    // variables: { email, password },
+    // })
   }
 
   // const { data, props } = useForm({
@@ -63,13 +68,13 @@ const LoginForm = () => {
         <Stack space={6}>
           <TextInput
             // {...props.email}
-            // title="Email"
-            // type="email"
-            // name="email"
+            title="Email"
+            type="email"
+            name="email"
             error={error}
             required
-            // value={email}
-            // onChange={setEmail}
+            value={email}
+            onChange={setEmail}
           />
 
           <Stack space={2}>
@@ -82,9 +87,9 @@ const LoginForm = () => {
               value={password}
               onChange={setPassword}
             />
-            <Link href="/login">
+            {/* <Link href="/login">
               <a className="link text-sm inline-block">Forgot your password?</a>
-            </Link>
+            </Link> */}
           </Stack>
         </Stack>
 

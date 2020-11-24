@@ -8,23 +8,23 @@ import { withApollo } from '../lib/initApollo'
 const SignIn = () => {
   return (
     <div className="w-full h-full bg bg-cover bg-center bg-purple-600 flex">
-      <Head title="Login | Pillar"></Head>
+      <Head title="Login | Pillar" />
       <div className="flex items-center pt-12 justify-center bg-page-primary flex-1 max-w-xl shadow-2xl pb-24">
         <div className="px-12 flex flex-col items-center max-w-lg  w-full">
           <div className="flex mb-6 flex-col items-start w-full">
             <Logo />
-            <div className="h-6"></div>
+            <div className="h-6" />
             <h2 className="mt-6 text-center text-3xl leading-9 font-bold text-fg-primary">
               Sign in to your account
             </h2>
-            <p className="mt-2 text-center text-sm leading-5 text-fg-secondary">
+            {/* <p className="mt-2 text-center text-sm leading-5 text-fg-secondary">
               Or{' '}
               <Link href="/signup">
                 <a className="text-fg-accent focus:outline-none focus:underline transition ease-in-out duration-150">
                   sign up and build a profile
                 </a>
               </Link>
-            </p>
+            </p> */}
           </div>
           <LoginForm />
         </div>

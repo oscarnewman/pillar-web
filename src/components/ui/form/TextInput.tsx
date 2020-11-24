@@ -61,10 +61,6 @@ const TextInput: React.FC<InputProps> = ({
           top: 50%;
           transform: translateY(-50%);
         }
-        @screen dark {
-          input {
-          }
-        }
       `}</style>
     </label>
   )
