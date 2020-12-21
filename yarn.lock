@@ -1160,8 +1160,10 @@
 
 "@tailwindcss/custom-forms@tailwindcss/custom-forms":
   version "0.2.1"
-  resolved "https://codeload.github.com/tailwindcss/custom-forms/tar.gz/cf4bad20272fbbe366207e40371950016c582f93"
+  uid "13fe3074dd10a63528de0191063806e34ff6b829"
+  resolved "https://codeload.github.com/tailwindcss/custom-forms/tar.gz/13fe3074dd10a63528de0191063806e34ff6b829"
   dependencies:
+    hex-rgb "^4.2.0"
     lodash "^4.17.11"
     mini-svg-data-uri "^1.0.3"
     traverse "^0.6.6"
@@ -3671,6 +3673,11 @@ he@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
   integrity sha1-k0EP0hsAlzUVH4howvJx80J+I/0=
+
+hex-rgb@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/hex-rgb/-/hex-rgb-4.2.0.tgz#fb377f2e5658fc924f1efa189685922e56ecaf0f"
+  integrity sha512-I7DkKeQ2kR2uyqgbxPgNgClH/rfs1ioKZhZW8VTIAirsxCR5EyhYeywgZbhMScgUbKCkgo6bb6JwA0CLTn9beA==
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
